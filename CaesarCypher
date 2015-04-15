@@ -10,7 +10,7 @@ import string
 
 # Get inputs from user
 
-first = unicode(raw_input("Please enter your message to be encrypted: "))
+encrypt = unicode(raw_input("Please enter your message to be encrypted: "))
 num = int(raw_input("Please enter your shift key number: "))
 
 
@@ -22,4 +22,4 @@ out_letters = in_letters[num:] + in_letters[:num]
 transtable = dict((ord(ic), oc) for ic, oc in zip(in_letters, out_letters))
 
 
-print first.translate(transtable)
+print encrypt.translate(transtable)
