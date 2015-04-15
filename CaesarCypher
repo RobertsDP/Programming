@@ -1,3 +1,11 @@
+#import alphabet/strings
+#get user message
+#get user shift key
+#calculate new message
+  #take each letter from user input + add user key for each letter
+#display new message 
+
+
 import string
 
 # Get inputs from user
