@@ -1,0 +1,32 @@
+# David Roberts
+# Problem 2
+
+initialBal = float(raw_input("What is your outstanding balance on your credit card: "))
+interestRate = float(raw_input("What is your annual percentage rate (as a decimal, i.e. 18% is .18): "))
+
+monthlyPayment = 0
+monthlyRate = interestRate/12
+bal = initialBal
+
+while bal > 0:
+	#month payment number guide .1 = $1, 1 = $10, 10 = $100, ect
+    monthlyPayment += 1
+    bal = initialBal
+    numMonths = 0
+    
+    while numMonths < 12 and bal > 0:
+             
+        numMonths += 1
+
+        interest = monthlyRate * bal
+        
+        bal -= monthlyPayment
+
+        bal += interest
+
+bal = round(bal,2)
+
+print "RESULT"
+print "Monthly payment to pay off debt in 1 year: $ {:,.2f}" .format(monthlyPayment)
+print "Number of months needed:", numMonths
+print "Balance: $ {:,.2f}".format(bal)
