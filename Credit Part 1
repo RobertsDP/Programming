@@ -1,0 +1,44 @@
+# David Roberts
+# Problem 1
+
+bal = float(raw_input("What is your outstanding balance on your credit card: "))
+annRate = float(raw_input("What is your annual percentage rate (as a decimal, i.e. 18% is .18): "))
+minPayRate = float(raw_input("What is your minimum monthly payment rate (as a decimal, i.e. 2% is .02): "))
+
+monthlyRate = annRate/12
+
+numMonths = 1
+totalPaid = 0
+totalprince = 0
+
+
+while numMonths <= 12:
+    
+    minPay = round(minPayRate * bal,2)
+    
+    totalPaid += minPay
+    
+    interestPaid = round(monthlyRate * bal,2)
+    
+    principalPaid = minPay - interestPaid
+    
+    totalprince += principalPaid
+    
+    bal -= principalPaid
+    
+    print "Month:", numMonths
+    print "Minimum monthly payment amount: $ {:,.2f}" .format(minPay)
+    print "Principle Paid: $ {:,.2f}" .format(principalPaid)
+    print "Remaining balance: $ {:,.2f}" .format(bal)
+    print " "
+    
+    numMonths += 1
+     
+
+print " "
+print "RESULT"
+print "Total amount paid: $ {:,.2f}" .format(totalPaid)
+print "Total principal paid: $ {:,.2f}" .format(totalprince)
+print "Remaining balance: $ {:,.2f}".format(bal)
+        
+    
