@@ -1,0 +1,58 @@
+import Tkinter as tk
+
+
+def click(key):
+    global memory
+    if key == '=':
+        
+        
+        if '/' in entry.get() and '.' not in entry.get():
+            entry.insert(tk.END, ".0")
+        
+        string1 = "-+0123456789."
+        if entry.get()[0] not in string1:
+            entry.insert(tk.END, "Please use proper character" + string1)
+        
+        try:
+            result = eval(entry.get())
+            entry.insert(tk.END, " = " + str(result))
+        except:
+            entry.insert(tk.END, "haha! Nope Nope Nope!!!")
+    elif key == 'C':
+        entry.delete(0, tk.END) 
+    
+    elif key == 'neg':
+        if '=' in entry.get():
+            entry.delete(0, tk.END)
+        try:
+            if entry.get()[0] == '-':
+                entry.delete(0)
+            else:
+                entry.insert(0, '-')
+        except IndexError:
+            pass
+    else:
+        if '=' in entry.get():
+            entry.delete(0, tk.END)
+        entry.insert(tk.END, key)
+root = tk.Tk()
+root.title("Calculator")
+btn_list = ['7',  '8',  '9',  '*',  'C',
+			'4',  '5',  '6',  '/',  'C',
+			'1',  '2',  '3',  '-',  'C',
+			'.',  '0',  '=',  '+',  'neg' ]
+
+r = 1
+c = 0
+for b in btn_list:
+    rel = 'ridge'
+    cmd = lambda x=b: click(x)
+    tk.Button(root, text=b, width=10 ,relief=rel,command=cmd).grid(row=r,column=c)
+    c += 1
+    if c > 4:
+        c = 0
+        r += 1
+
+entry = tk.Entry(root, width=66, bg="cyan")
+entry.grid(row=0, column=0, columnspan=5)
+root.mainloop()
